@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>DermScan AI</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css"/>
+
+  <!-- Google Font -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+</head>
+
+<body>
+
+<div class="app">
+
+  <!-- ========================= -->
+  <!-- SIDEBAR -->
+  <!-- ========================= -->
+
+  <aside class="sidebar">
+
+    <div class="logo-section">
+      <div class="logo-mark">AI</div>
+      <h2>DermScan AI</h2>
+      <p class="tagline">
+        Medical Intelligence Dashboard
+      </p>
+    </div>
+
+    <ul class="menu">
+
+      <li
+        id="dashboardMenu"
+        class="active"
+        onclick="goDashboard()"
+      >
+        <span class="menu-icon">01</span>
+        Dashboard
+      </li>
+
+      <li
+        id="historyMenu"
+        onclick="loadHistory()"
+      >
+        <span class="menu-icon">02</span>
+        Scan History
+      </li>
+
+      <li onclick="showResources()">
+        <span class="menu-icon">03</span>
+        AI Resources
+      </li>
+
+      <li onclick="showDoctors()">
+        <span class="menu-icon">04</span>
+        Doctors
+      </li>
+
+      <li onclick="showProfile()">
+        <span class="menu-icon">05</span>
+        Profile
+      </li>
+
+    </ul>
+
+    <div class="sidebar-footer">
+      <span class="pulse-dot"></span>
+      Secure AI engine online
+    </div>
+
+  </aside>
+
+  <!-- ========================= -->
+  <!-- MAIN -->
+  <!-- ========================= -->
+
+  <main class="main">
+
+    <!-- Top Header -->
+    <div class="top-header">
+
+      <div>
+        <span class="eyebrow">CNN Skin Disease Prediction System</span>
+
+        <h1>Skin Disease Detection</h1>
+
+        <p class="subtitle">
+          AI-powered dermatology analysis with confidence scoring and heatmap visualization
+        </p>
+      </div>
+
+      <div class="status-badge">
+        <span class="pulse-dot"></span>
+        AI System Active
+      </div>
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- CARDS -->
+    <!-- ========================= -->
+
+    <div
+      class="cards"
+      id="dashboardSection"
+    >
+
+      <!-- ========================= -->
+      <!-- STEP 1 -->
+      <!-- ========================= -->
+
+      <div class="card upload-card">
+
+        <div class="step-title">
+          <span class="step-number">01</span>
+          <h3>Upload Skin Image</h3>
+        </div>
+
+        <div class="upload-box">
+
+          <div class="upload-icon">
+            SCAN
+          </div>
+
+          <p class="upload-text">
+            Upload or scan skin image
+          </p>
+
+          <input
+            type="file"
+            id="imageInput"
+            accept="image/*"
+          />
+
+        </div>
+
+        <button
+          class="scan-btn"
+          onclick="uploadImage()"
+        >
+          SCAN NOW
+        </button>
+
+        <button
+          class="upload-btn"
+          onclick="uploadImage()"
+        >
+          UPLOAD IMAGE
+        </button>
+
+      </div>
+
+      <!-- ========================= -->
+      <!-- STEP 2 -->
+      <!-- ========================= -->
+
+      <div class="card analysis-card">
+
+        <div class="step-title">
+          <span class="step-number">02</span>
+          <h3>AI Analysis</h3>
+        </div>
+
+        <div class="progress-bar">
+          <div
+            class="progress"
+            id="progress"
+          ></div>
+        </div>
+
+        <p id="status">
+          Waiting for image input...
+        </p>
+
+        <div class="analysis-points">
+
+          <div class="point">
+            Texture Analysis
+          </div>
+
+          <div class="point">
+            Pattern Detection
+          </div>
+
+          <div class="point">
+            AI Classification
+          </div>
+
+        </div>
+
+        <img
+          id="preview"
+          alt="Preview"
+        />
+
+      </div>
+
+      <!-- ========================= -->
+      <!-- STEP 3 -->
+      <!-- ========================= -->
+
+      <div class="card result-card">
+
+        <div class="step-title">
+          <span class="step-number">03</span>
+          <h3>Prediction Result</h3>
+        </div>
+
+        <!-- Disease -->
+        <h2
+          id="disease"
+          class="highlight"
+        ></h2>
+
+        <!-- Confidence -->
+        <p id="confidence"></p>
+
+        <!-- Graph -->
+        <div class="graph">
+
+          <div
+            class="bar"
+            id="bar1"
+          ></div>
+
+          <div
+            class="bar small"
+            id="bar2"
+          ></div>
+
+          <div
+            class="bar tiny"
+            id="bar3"
+          ></div>
+
+        </div>
+
+        <!-- Heatmap -->
+        <div class="heatmap-box">
+
+          <img
+            id="heatmap"
+            class="heatmap"
+            alt="Heatmap"
+            style="display:none;"
+          />
+
+        </div>
+
+        <!-- Next Steps -->
+        <div class="next">
+
+          <h4>
+            Recommended Action
+          </h4>
+
+          <p class="warning">
+            Immediate dermatologist consultation recommended
+          </p>
+
+          <button class="orange">
+            Book Appointment
+          </button>
+
+          <button class="gray">
+            Export Report
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- SCAN HISTORY -->
+    <!-- ========================= -->
+
+    <div
+      class="cards history-cards"
+      id="historySection"
+      style="display:none;"
+    >
+
+      <div class="card history-card">
+
+        <div class="step-title">
+          <span class="step-number">04</span>
+          <h3>Scan History</h3>
+        </div>
+
+        <p id="historyStatus">
+          Loading scan history...
+        </p>
+
+        <div id="historyList"></div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+</div>
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+<!-- JS -->
+<script src="script.js"></script>
+
+</body>
+</html>
